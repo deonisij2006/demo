@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: phone-service
+  data:
+    mongodb:
+      authentication-database: admin
+      username: user
+      password: pwd
+      database: cache
+      port: 27017
+      host: localhost
+
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,30 @@
+version: "3.7"
+
+networks:
+  temp-network:
+    name: temp-network
+
+services:
+  phone-service:
+    build:
+      context: .
+    ports:
+      - 6006:8080
+    networks:
+      - temp-network
+
+  mongo:
+    environment:
+      - MONGO_INITDB_DATABASE=cache
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pwd
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+      - mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+    networks:
+      - temp-network
+
+volumes:
+  mongo-volume:
