@@ -33,7 +33,7 @@ public class CountryCodeService {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        return countryRepository.findAllByCountryStartingWithIgnoreCase(namePrefix);
+        return namePrefix == null ? countryRepository.findAll() : countryRepository.findAllByCountryStartingWithIgnoreCase(namePrefix);
     }
 
     public List<Country> getCountries() {

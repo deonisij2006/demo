@@ -24,7 +24,7 @@ public class CountryController {
     }
 
     @GetMapping(value = "/code")
-    List<Country> getCountryCode(@RequestParam(value = "country")String country) {
+    List<Country> getCountryCode(@RequestParam(value = "country", required = false)String country) {
         logger.debug("Request with code fore: " + country);
         return countryCodeService.getCountryByNamePrefix(country);
     }
