@@ -6,6 +6,8 @@ networks:
 
 services:
   phone-service:
+    environment:
+     - SPRING_PROFILES_ACTIVE=docker
     build:
       context: .
     ports:
